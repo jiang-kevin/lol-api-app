@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Configuration;
 using Newtonsoft.Json;
 
 namespace LolApp
@@ -23,7 +24,7 @@ namespace LolApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string apiKey = "RGAPI-214283fe-7c65-4211-89d5-8d51585e98a9";
+        private string apiKey = ConfigurationManager.AppSettings["apiKey"];
 
         public MainWindow()
         {

@@ -30,7 +30,7 @@ namespace LolApp.Data
         /// Date summoner was last modified specified as epoch milliseconds
         /// </summary>
         [JsonProperty("revisionDate")]
-        public DateTime RevisionDate { get; set; }
+        public long RevisionDate { get; set; }
 
         /// <summary>
         /// Summoner ID

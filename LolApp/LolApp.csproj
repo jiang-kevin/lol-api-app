@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Data\Summoner.cs" />
     <Compile Include="Interfaces\IRiotApi.cs" />
+    <Compile Include="RiotApi.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

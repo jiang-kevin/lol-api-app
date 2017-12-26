@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LolApp
+namespace LolApp.Interfaces
 {
     /// <summary>
     /// Represents an instance of the Riot Games API
     /// </summary>
-    class RiotApi
+    public interface IRiotApi
     {
 
     }

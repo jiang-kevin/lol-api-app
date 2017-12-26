@@ -6,7 +6,7 @@ namespace LolApp.Data
     /// <summary>
     /// Class representing a Summoner in the Riot Games API
     /// </summary>
-    class Summoner
+    public class Summoner
     {
         /// <summary>
         /// ID of the summoner icon associated with the summoner

@@ -35,11 +35,11 @@ namespace LolApp
 
         private void InitializeScreen()
         {
-            lstRegion.Items.Add("NA");
-            lstRegion.Items.Add("EUW");
-            lstRegion.Items.Add("EUN");
-            lstRegion.Items.Add("KR");
-            lstRegion.Text = "NA";
+            lstRegion.Items.Add(new Region("NA","na1"));   
+            lstRegion.Items.Add(new Region("EUW", "euw1"));  
+            lstRegion.Items.Add(new Region("EUN", "eun1"));
+            lstRegion.Items.Add(new Region("KR", "kr"));
+            lstRegion.SelectedIndex = 0;
         }
 
         private void PopulateContent()
@@ -48,7 +48,8 @@ namespace LolApp
 
             var api = new RiotApi(apiKey);
 
-            Summoner player = api.GetSummonerByName("na1", name);
+            var region = (Region)lstRegion.SelectedItem;
+            Summoner player = api.GetSummonerByName(region.RegionCode, name);
             lblStatus.Text = player.Name;
 
             //// check validity of name

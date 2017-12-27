@@ -15,27 +15,26 @@ namespace LolApp
         public string ApiKey { get; set; }
 
         // private fields
-        private const string BaseUrl = "api.riotgames.com";
+        private const string BaseUrl = "https://{0}.api.riotgames.com";
 
         private const string SummonerRootUrl = "/lol/summoner/v3/summoners";
-        private const string SummonerByNameUrl = "/by-name/";
+        private const string SummonerByNameUrl = SummonerRootUrl + "/by-name/{0}";
 
         public RiotApi(string apiKey)
         {
             ApiKey = apiKey;
         }
 
-        public string BuildUrl(string region, string rootUrl, string specUrl, string data)
-        {
-            string url = "https://" + region + "." + BaseUrl + rootUrl + specUrl + data + "?api_key=" + ApiKey;
-            return url;
-        }
-
         public Summoner GetSummonerByName(string region, string name)
         {
-            string url = BuildUrl(region, SummonerRootUrl, SummonerByNameUrl, name);
-            string json = new WebClient().DownloadString(url);
+            string json = RequestJson(String.Format(SummonerByNameUrl, name), "na1");
             return JsonConvert.DeserializeObject<Summoner>(json);
+        }
+
+        private string RequestJson(string rootUrl, string region)
+        {
+            string url = String.Format(BaseUrl, region) + rootUrl + "?api_key=" + ApiKey;
+            return new WebClient().DownloadString(url);
         }
     }
 }

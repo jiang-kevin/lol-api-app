@@ -56,20 +56,6 @@ namespace LolApp
             //{
             //    throw new Exception("Invalid username");
             //}
-
-            //string summonerUrl = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + name + "?api_key=" + apiKey;  // generate url
-            //var response = new WebClient().DownloadString(summonerUrl);                                                             // get json string
-            //Dictionary<string, string> playerData = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);            // convert json to dict
-
-            //long playerId = Convert.ToInt64(playerData["id"]);      // get player id from username
-
-            //string spectatorUrl = "https://na1.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/" + playerId + "?api_key=" + apiKey;
-            //var spectatorResponse = new WebClient().DownloadString(spectatorUrl);
-            //Dictionary<string, string> gameData = JsonConvert.DeserializeObject<Dictionary<string, string>>(spectatorResponse);
-
-            //lblStatus.Text = gameData["gameid"].ToString();
-
-
         }
 
         private void BtnGetInfo_Click(object sender, RoutedEventArgs e)

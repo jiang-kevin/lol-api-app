@@ -12,7 +12,6 @@ namespace LolApp.Interfaces
     /// </summary>
     public interface IRiotApi
     {
-        string BuildUrl(string region, string rootUrl, string specUrl, string data);
         Summoner GetSummonerByName(string region, string name);
     }
 }

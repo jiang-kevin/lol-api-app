@@ -25,7 +25,8 @@ namespace LolApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string apiKey = ConfigurationManager.AppSettings["apiKey"];
+        private string apiKey;
+        RiotApi api;
 
         public MainWindow()
         {
@@ -40,17 +41,22 @@ namespace LolApp
             lstRegion.Items.Add(new Region("EUN", "eun1"));
             lstRegion.Items.Add(new Region("KR", "kr"));
             lstRegion.SelectedIndex = 0;
+
+            apiKey = ConfigurationManager.AppSettings["apiKey"];    // get API key from config file
+            api = new RiotApi(apiKey);                              // create a new instance of the Riot API
         }
 
         private void PopulateContent()
         {
             string name = txtUsername.Text;
 
-            var api = new RiotApi(apiKey);
-
+            // get a player from name input
             var region = (Region)lstRegion.SelectedItem;
             Summoner player = api.GetSummonerByName(region.RegionCode, name);
             lblStatus.Text = player.Name;
+
+            // put player info into data grid container
+            // TODO
 
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))

@@ -13,6 +13,16 @@
         <Label Content="Summoner Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.667,0.859"/>
         <Label Content="Region:" HorizontalAlignment="Left" Margin="132,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.435,0.047"/>
         <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TabControl HorizontalAlignment="Left" Height="227" Margin="10,75,0,0" VerticalAlignment="Top" Width="487">
+            <TabItem Header="Info">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="gridInfo" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="481" Margin="0,0,-0.2,0" HeadersVisibility="None" BorderThickness="0"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Game">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

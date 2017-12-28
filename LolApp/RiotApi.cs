@@ -27,7 +27,7 @@ namespace LolApp
 
         public Summoner GetSummonerByName(string region, string name)
         {
-            string json = RequestJson(String.Format(SummonerByNameUrl, name), "na1");
+            string json = RequestJson(String.Format(SummonerByNameUrl, name), region);
             return JsonConvert.DeserializeObject<Summoner>(json);
         }
 

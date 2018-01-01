@@ -9,14 +9,14 @@
     <Grid>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnGetInfo" Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
-        <ComboBox x:Name="lstRegion" HorizontalAlignment="Left" Margin="135,37,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.213,1.696"/>
+        <ComboBox x:Name="cbxRegion" HorizontalAlignment="Left" Margin="135,37,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.213,1.696"/>
         <Label Content="Summoner Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.667,0.859"/>
         <Label Content="Region:" HorizontalAlignment="Left" Margin="132,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.435,0.047"/>
         <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TabControl HorizontalAlignment="Left" Height="227" Margin="10,75,0,0" VerticalAlignment="Top" Width="487">
             <TabItem Header="Info">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="gridInfo" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="481" Margin="0,0,-0.2,0" HeadersVisibility="None" BorderThickness="0"/>
+                    <Image x:Name="imgProfileIcon" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Game">

@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Configuration;
 using Newtonsoft.Json;
 using LolApp.Data;
+using LolApp.Api;
 
 namespace LolApp
 {
@@ -27,6 +28,7 @@ namespace LolApp
     {
         private string apiKey;
         RiotApi api;
+        StaticApi staticApi;
 
         public MainWindow()
         {
@@ -36,14 +38,17 @@ namespace LolApp
 
         private void InitializeScreen()
         {
-            lstRegion.Items.Add(new Region("NA","na1"));   
-            lstRegion.Items.Add(new Region("EUW", "euw1"));  
-            lstRegion.Items.Add(new Region("EUN", "eun1"));
-            lstRegion.Items.Add(new Region("KR", "kr"));
-            lstRegion.SelectedIndex = 0;
+            cbxRegion.Items.Add(new Region("NA","na1"));   
+            cbxRegion.Items.Add(new Region("EUW", "euw1"));  
+            cbxRegion.Items.Add(new Region("EUN", "eun1"));
+            cbxRegion.Items.Add(new Region("KR", "kr"));
+            cbxRegion.SelectedIndex = 0;
+            
 
             apiKey = ConfigurationManager.AppSettings["apiKey"];    // get API key from config file
             api = new RiotApi(apiKey);                              // create a new instance of the Riot API
+            staticApi = new StaticApi(apiKey);                      // create a new instance of the Riot Static API
+
         }
 
         private void PopulateContent()
@@ -51,12 +56,17 @@ namespace LolApp
             string name = txtUsername.Text;
 
             // get a player from name input
-            var region = (Region)lstRegion.SelectedItem;
+            var region = (Region)cbxRegion.SelectedItem;
             Summoner player = api.GetSummonerByName(region.RegionCode, name);
             lblStatus.Text = player.Name;
 
+            // get profile icon from static api
+            string profileIconUrl = staticApi.GetProfileIconUrl(player.ProfileIconId, region);
+
             // put player info into data grid container
-            // TODO
+            var uri = new Uri(profileIconUrl);
+            var bitmap = new BitmapImage(uri);
+            imgProfileIcon.Source = bitmap;
 
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))

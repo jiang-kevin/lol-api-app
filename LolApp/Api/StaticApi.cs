@@ -13,19 +13,21 @@ namespace LolApp.Api
         private const string ProfileIconRootUrl = "/lol/static-data/v3/profile-icons";
         private const string RealmsRootUrl = "/lol/static-data/v3/realms";
 
+        private const string DDProfileIconUrl = "http://ddragon.leagueoflegends.com/cdn/{0}/img/profileicon/";
+
         public StaticApi(string apiKey) :
             base(apiKey)
         { }
 
         public DDVersion GetVersion(Region region)
         {
-            string json = RequestJson(RealmsRootUrl, region);
+            string json = RequestCachedJson(RealmsRootUrl, region);
             return JsonConvert.DeserializeObject<DDVersion>(json);
         }
 
         public ProfileIconList GetProfileIconList(Region region)
         {
-            string json = RequestJson(ProfileIconRootUrl, region);
+            string json = RequestCachedJson(ProfileIconRootUrl, region);
             return JsonConvert.DeserializeObject<ProfileIconList>(json);
         }
 
@@ -35,7 +37,7 @@ namespace LolApp.Api
             string filename = profileIcons.Data[id].Image.Full;
             DDVersion versionList = GetVersion(region);
             string profileIconVersion = versionList.N["profileicon"];
-            return String.Format("http://ddragon.leagueoflegends.com/cdn/{0}/img/profileicon/", profileIconVersion) + filename;
+            return String.Format(DDProfileIconUrl, profileIconVersion) + filename;
         }
     }
 }

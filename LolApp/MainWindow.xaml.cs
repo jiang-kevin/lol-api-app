@@ -57,7 +57,7 @@ namespace LolApp
 
             // get a player from name input
             var region = (Region)cbxRegion.SelectedItem;
-            Summoner player = api.GetSummonerByName(region.RegionCode, name);
+            Summoner player = api.GetSummonerByName(region, name);
             lblStatus.Text = player.Name;
 
             // get profile icon from static api

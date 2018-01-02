@@ -19,7 +19,7 @@ namespace LolApp.Api
             base(apiKey)
         { }
 
-        public Summoner GetSummonerByName(string region, string name)
+        public Summoner GetSummonerByName(Region region, string name)
         {
             string json = RequestJson(String.Format(SummonerByNameUrl, name), region);
             return JsonConvert.DeserializeObject<Summoner>(json);

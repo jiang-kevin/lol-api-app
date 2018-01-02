@@ -66,6 +66,7 @@
     <Compile Include="Data\ProfileIconList.cs" />
     <Compile Include="Data\Region.cs" />
     <Compile Include="Data\Summoner.cs" />
+    <Compile Include="Data\DDVersion.cs" />
     <Compile Include="Interfaces\IRiotApi.cs" />
     <Compile Include="Api\RiotApi.cs" />
     <Page Include="MainWindow.xaml">

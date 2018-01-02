@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using LolApp.Data;
 
 namespace LolApp.Api
 {
@@ -20,9 +21,9 @@ namespace LolApp.Api
             ApiKey = apiKey;
         }
 
-        protected string RequestJson(string rootUrl, string region)
+        protected string RequestJson(string rootUrl, Region region)
         {
-            string url = String.Format(BaseUrl, region) + rootUrl + "?api_key=" + ApiKey;
+            string url = String.Format(BaseUrl, region.RegionCode) + rootUrl + "?api_key=" + ApiKey;
             return new WebClient().DownloadString(url);
         }
         #endregion

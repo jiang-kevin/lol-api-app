@@ -31,6 +31,12 @@ namespace LolApp.Api
             }
         }
 
+        public static DateTime FromUnixTime(long epochTime)
+        {
+            DateTime date = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(epochTime);
+            return date.ToLocalTime();
+        }
+
         protected string RequestJson(string rootUrl, Region region)
         {
             string url = String.Format(BaseUrl, region.RegionCode) + rootUrl + "?api_key=" + ApiKey;

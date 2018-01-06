@@ -60,11 +60,13 @@ namespace LolApp
             Summoner player = api.GetSummonerByName(region, name);
             txtName.Text = player.Name;
             txtLevel.Text = "Level " + player.SummonerLevel.ToString();
+            txtRevision.Text = Api.Api.FromUnixTime(player.RevisionDate).ToString();
+            lblStatus.Text = player.Id.ToString();
 
             // get profile icon from static api
             string profileIconUrl = staticApi.GetProfileIconUrl(player.ProfileIconId, region);
 
-            // put player info into data grid container
+            // put player info into image
             var uri = new Uri(profileIconUrl);
             var bitmap = new BitmapImage(uri);
             imgProfileIcon.Source = bitmap;

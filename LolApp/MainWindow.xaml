@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LolApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="460.4" Width="714.6">
+        Title="MainWindow" Height="470" Width="725">
     <Grid>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnGetInfo" Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
@@ -16,10 +16,11 @@
         <TabControl HorizontalAlignment="Left" Height="346" Margin="10,75,0,0" VerticalAlignment="Top" Width="688">
             <TabItem Header="Info">
                 <Grid Background="#FFE5E5E5">
-                    <Image x:Name="imgProfileIcon" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="20"/>
-                    <TextBlock x:Name="lblLevel" HorizontalAlignment="Left" Margin="126,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="lblRevision" HorizontalAlignment="Left" Margin="126,53,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
+                    <Image x:Name="imgProfileIcon" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="resources/base-icons/bronze.png"/>
+                    <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                    <TextBlock x:Name="lblLevel" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
+                    <TextBlock x:Name="lblRevision" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Game">

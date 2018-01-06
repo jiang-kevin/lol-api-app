@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace LolApp.Data
 {
+    /// <summary>
+    /// Class representing a region for the Riot Games API
+    /// </summary>
     public class Region
     {
         public Region(string regionDisp, string regionCode)
@@ -19,7 +22,14 @@ namespace LolApp.Data
             return RegionDisp;
         }
 
+        /// <summary>
+        /// Representation of region for human readability
+        /// </summary>
         public string RegionDisp;
+
+        /// <summary>
+        /// Representation of region for use in API
+        /// </summary>
         public string RegionCode;
     }
 }

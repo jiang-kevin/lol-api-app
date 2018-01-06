@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LolApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="460.4" Width="714.6">
     <Grid>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnGetInfo" Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
@@ -13,13 +13,13 @@
         <Label Content="Summoner Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.667,0.859"/>
         <Label Content="Region:" HorizontalAlignment="Left" Margin="132,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.435,0.047"/>
         <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TabControl HorizontalAlignment="Left" Height="227" Margin="10,75,0,0" VerticalAlignment="Top" Width="487">
+        <TabControl HorizontalAlignment="Left" Height="346" Margin="10,75,0,0" VerticalAlignment="Top" Width="688">
             <TabItem Header="Info">
                 <Grid Background="#FFE5E5E5">
                     <Image x:Name="imgProfileIcon" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock x:Name="txtName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="20"/>
-                    <TextBlock x:Name="txtLevel" HorizontalAlignment="Left" Margin="126,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="txtRevision" HorizontalAlignment="Left" Margin="126,53,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="20"/>
+                    <TextBlock x:Name="lblLevel" HorizontalAlignment="Left" Margin="126,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblRevision" HorizontalAlignment="Left" Margin="126,53,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Game">

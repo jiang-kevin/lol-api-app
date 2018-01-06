@@ -10,7 +10,7 @@ namespace LolApp.Data
     /// <summary>
     /// Represents a league that a summoner is in
     /// </summary>
-    class League
+    public class LeaguePosition
     {
         [JsonProperty("queueType")]
         public string QueueType { get; set; }
@@ -20,6 +20,9 @@ namespace LolApp.Data
 
         [JsonProperty("wins")]
         public long Wins { get; set; }
+
+        [JsonProperty("miniSeries")]
+        public MiniSeries MiniSeries { get; set; }
 
         [JsonProperty("veteran")]
         public bool Veteran { get; set; }

@@ -61,7 +61,8 @@
     </ApplicationDefinition>
     <Compile Include="Api\Api.cs" />
     <Compile Include="Api\StaticApi.cs" />
-    <Compile Include="Data\League.cs" />
+    <Compile Include="Data\LeaguePosition.cs" />
+    <Compile Include="Data\MiniSeries.cs" />
     <Compile Include="Data\PImage.cs" />
     <Compile Include="Data\ProfileIcon.cs" />
     <Compile Include="Data\ProfileIconList.cs" />

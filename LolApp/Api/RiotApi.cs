@@ -15,7 +15,7 @@ namespace LolApp.Api
         private const string SummonerRootUrl = "/lol/summoner/v3/summoners";
         private const string SummonerByNameUrl = SummonerRootUrl + "/by-name/{0}";
 
-        private const string LeagueRootUrl = "/lol/league/v3/";
+        private const string LeagueRootUrl = "/lol/league/v3";
         private const string LeaguePositionByIdUrl = LeagueRootUrl + "/positions/by-summoner/{0}";
 
         public RiotApi(string apiKey) :

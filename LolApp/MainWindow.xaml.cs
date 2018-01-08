@@ -18,6 +18,7 @@ using System.Configuration;
 using Newtonsoft.Json;
 using LolApp.Data;
 using LolApp.Api;
+using LolApp.Properties;
 
 namespace LolApp
 {
@@ -71,6 +72,43 @@ namespace LolApp
             var uri = new Uri(profileIconUrl);
             var bitmap = new BitmapImage(uri);
             imgProfileIcon.Source = bitmap;
+
+            List<LeaguePosition> leagues = api.GetLeaguePositionById(region, player.Id);
+            string tierIconFormat = "{0}_{1}.png";
+
+            for (int i = 0; i < leagues.Count; ++i)
+            {
+                // Adds a column if there is more than one queue the summoner is ranked in
+                if (i > 0)
+                {
+                    grdLeagues.ColumnDefinitions.Add(new ColumnDefinition());
+                }
+
+                Image tierIcon = new Image();
+                string iconName = String.Format(tierIconFormat, leagues[i].Tier.ToLower(), leagues[i].Rank.ToLower());
+                tierIcon.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/LolApp;component/resources/tier-icons/" + iconName));
+                Grid.SetRow(tierIcon, 0);
+                Grid.SetColumn(tierIcon, i);
+
+
+                TextBlock queueType = new TextBlock();
+                queueType.Text = leagues[i].QueueType;
+                Grid.SetRow(queueType, 1);
+                Grid.SetColumn(queueType, i);
+
+
+                TextBlock rank = new TextBlock();
+                rank.Text = leagues[i].Tier + leagues[i].Rank;
+                Grid.SetRow(rank, 2);
+                Grid.SetColumn(rank, i);
+
+                grdLeagues.Children.Add(tierIcon);
+                grdLeagues.Children.Add(queueType);
+                grdLeagues.Children.Add(rank);
+            }
+
+            grdLeagues.ColumnDefinitions.Add(new ColumnDefinition());
 
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))

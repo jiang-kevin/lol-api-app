@@ -21,6 +21,13 @@
                     <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
                     <TextBlock x:Name="lblLevel" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
                     <TextBlock x:Name="lblRevision" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
+                    <Grid x:Name="grdLeagues" HorizontalAlignment="Left" Height="193" Margin="10,115,0,0" VerticalAlignment="Top" Width="662">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.15*"/>
+                            <RowDefinition Height="0.15*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Game">

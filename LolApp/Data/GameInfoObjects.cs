@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace LolApp.Data
 {
@@ -56,7 +57,7 @@ namespace LolApp.Data
         /// List of Game Customizations
         /// </summary>
         [JsonProperty("gameCustomizationObjects")]
-        public list<GameCustomizationObject> GameCustomizationObjects { get; set; }
+        public List<GameCustomizationObject> GameCustomizationObjects { get; set; }
 
         /// <summary>
         /// Flag indicating whether or not this participant is a bot
@@ -68,7 +69,7 @@ namespace LolApp.Data
         /// Perks/Runes Reforged Information
         /// </summary>
         [JsonProperty("perks")]
-        public perks Perks { get; set; }
+        public Perks Perks { get; set; }
 
         /// <summary>
         /// The ID of the second summoner spell used by this participant
@@ -122,7 +123,7 @@ namespace LolApp.Data
         /// IDs of the perks/runes assigned.
         /// </summary>
         [JsonProperty("perkIds")]
-        public list<long> PerkIds { get; set; }
+        public List<long> PerkIds { get; set; }
 
         /// <summary>
         /// Secondary runes path

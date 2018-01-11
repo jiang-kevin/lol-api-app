@@ -35,5 +35,11 @@ namespace LolApp.Api
             string profileIconVersion = versionList.N["profileicon"];
             return String.Format(DDProfileIconUrl, profileIconVersion) + filename;
         }
+
+        public string GetChampionIconsUrl(Region region)
+        {
+
+            return null;
+        }
     }
 }

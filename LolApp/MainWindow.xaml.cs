@@ -45,7 +45,7 @@ namespace LolApp
             string name = txtUsername.Text;
 
             // get a player from name input
-            var region = (Region)cbxRegion.SelectedItem;
+            Region region = (Region)cbxRegion.SelectedItem;
             Summoner player = api.GetSummonerByName(region, name);
 
             // put player info into labels
@@ -98,11 +98,21 @@ namespace LolApp
 
             grdLeagues.ColumnDefinitions.Add(new ColumnDefinition());
 
+            PopulateGame(region, player.Id);
+
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))
             //{
             //    throw new Exception("Invalid username");
             //}
+        }
+
+        private void PopulateGame (Region region, long id)
+        {
+            GameInfo info = api.GetGameInfoById(region, id);
+            List<CurrentGameParticipant> allPlayers = info.Participants;
+            // get profile icon from static api
+            string profileIconUrl = staticApi.GetProfileIconUrl(region);
         }
 
         private void BtnGetInfo_Click(object sender, RoutedEventArgs e)

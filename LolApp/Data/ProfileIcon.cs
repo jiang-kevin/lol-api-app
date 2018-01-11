@@ -16,7 +16,7 @@ namespace LolApp.Data
         /// Image object
         /// </summary>
         [JsonProperty("image")]
-        public PImage Image { get; set; }
+        public RiotImage Image { get; set; }
 
         /// <summary>
         /// Id of the profile image

@@ -47,7 +47,7 @@ namespace LolApp.Data
         /// Banned champion information
         /// </summary>
         [JsonProperty("bannedChampions")]
-        public list<BannedChampion> BannedChampions { get; set; }
+        public List<BannedChampion> BannedChampions { get; set; }
 
         /// <summary>
         /// The observer information
@@ -59,7 +59,7 @@ namespace LolApp.Data
         /// The participant information
         /// </summary>
         [JsonProperty("participants")]
-        public list<CurrentGameParticipant> Participants { get; set; }
+        public List<CurrentGameParticipant> Participants { get; set; }
 
         /// <summary>
         /// The amount of time in seconds that has passed since the game started

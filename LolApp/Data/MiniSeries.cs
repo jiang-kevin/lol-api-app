@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LolApp.Data
 {
@@ -19,6 +14,6 @@ namespace LolApp.Data
         public int Target { get; set; }
 
         [JsonProperty("progress")]
-        public int Progress { get; set; }
+        public string Progress { get; set; }
     }
 }

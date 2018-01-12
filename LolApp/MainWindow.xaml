@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="470" Width="725">
     <Grid>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnGetInfo" Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
-        <ComboBox x:Name="cbxRegion" HorizontalAlignment="Left" Margin="135,37,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.213,1.696"/>
+        <TextBox Text="{Binding Username}"  HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
+        <ComboBox ItemsSource="{Binding RegionList}" SelectedItem="{Binding Region}" HorizontalAlignment="Left" Margin="135,37,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.213,1.696"/>
         <Label Content="Summoner Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.667,0.859"/>
         <Label Content="Region:" HorizontalAlignment="Left" Margin="132,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.435,0.047"/>
         <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
@@ -17,10 +17,10 @@
             <TabItem Header="Info">
                 <Grid Background="#FFE5E5E5">
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
-                    <Image x:Name="imgProfileIcon" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="resources/base-icons/bronze.png"/>
-                    <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                    <TextBlock x:Name="lblLevel" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
-                    <TextBlock x:Name="lblRevision" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
+                    <Image Source="{Binding ProfileIcon}" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock Text="{Binding Summoner.Name}" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                    <TextBlock Text="{Binding Summoner.SummonerLevel}" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
+                    <TextBlock Text="{Binding Summoner.RevisionDate}" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
                     <Grid x:Name="grdLeagues" HorizontalAlignment="Left" Height="193" Margin="10,115,0,0" VerticalAlignment="Top" Width="662">
                         <Grid.RowDefinitions>
                             <RowDefinition/>

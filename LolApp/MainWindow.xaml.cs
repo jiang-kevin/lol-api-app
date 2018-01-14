@@ -18,7 +18,7 @@ using System.Configuration;
 using Newtonsoft.Json;
 using LolApp.Data;
 using LolApp.Api;
-using LolApp.Properties;
+using LolApp.ViewModel;
 
 namespace LolApp
 {

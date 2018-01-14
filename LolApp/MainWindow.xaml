@@ -19,8 +19,8 @@
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
                     <Image Source="{Binding ProfileIcon}" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <TextBlock Text="{Binding Summoner.Name}" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                    <TextBlock Text="{Binding Summoner.SummonerLevel}" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
-                    <TextBlock Text="{Binding Summoner.RevisionDate}" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
+                    <TextBlock Text="{Binding Path=Summoner.SummonerLevel, StringFormat=Level {0}}" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
+                    <TextBlock Text="{Binding Path=Summoner.RevisionDate}" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
                     <Grid x:Name="grdLeagues" HorizontalAlignment="Left" Height="193" Margin="10,115,0,0" VerticalAlignment="Top" Width="662">
                         <Grid.RowDefinitions>
                             <RowDefinition/>

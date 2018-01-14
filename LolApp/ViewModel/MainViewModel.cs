@@ -6,7 +6,7 @@ using LolApp.Api;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
 
-namespace LolApp
+namespace LolApp.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -31,7 +31,20 @@ namespace LolApp
                 }
             }
         }
-        public BitmapImage ProfileIcon { get; set; }
+
+        private BitmapImage profileIcon;
+        public BitmapImage ProfileIcon
+        {
+            get { return profileIcon; }
+            set
+            {
+                if (profileIcon != value)
+                {
+                    profileIcon = value;
+                    RaisePropertyChanged("ProfileIcon");
+                }
+            }
+        }
 
         public MainViewModel(RiotApi apiInstance, StaticApi staticApiInstance)
         {

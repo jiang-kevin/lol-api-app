@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace LolApp.Data
@@ -10,13 +6,13 @@ namespace LolApp.Data
     /// <summary>
     /// Class representing a list of profile icons
     /// </summary>
-    public class ProfileIconList
+    public class IconList<d,t>
     {
         /// <summary>
         /// List of profile image objects
         /// </summary>
         [JsonProperty("data")]
-        public Dictionary<int, ProfileIcon> Data { get; set; }
+        public Dictionary<d, t> Data { get; set; }
 
         /// <summary>
         /// Version of Data Dragon

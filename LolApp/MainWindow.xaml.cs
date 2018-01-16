@@ -112,7 +112,7 @@ namespace LolApp
             GameInfo info = api.GetGameInfoById(region, id);
             List<CurrentGameParticipant> allPlayers = info.Participants;
             // get profile icon from static api
-            string profileIconUrl = staticApi.GetProfileIconUrl(region);
+            string profileIconUrl = staticApi.GetChampionIconUrl(region);
         }
 
         private void BtnGetInfo_Click(object sender, RoutedEventArgs e)

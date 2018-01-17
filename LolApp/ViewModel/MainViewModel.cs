@@ -206,17 +206,33 @@ namespace LolApp.ViewModel
             // get profile icon from static api
             string profileIconUrl = staticApi.GetProfileIconUrl(Summoner.ProfileIconId, Region);
 
-            var uri = new Uri(profileIconUrl);
+            Uri uri = new Uri(profileIconUrl);
             ProfileIcon = new BitmapImage(uri);
 
             Leagues = api.GetLeaguePositionById(Region, Summoner.Id);
-            string tierIconFormat = "{0}_{1}.png";
-            string tierIconLocation = "pack://application:,,,/LolApp;component/resources/tier-icons/";
+            string tierIconLocation = "pack://application:,,,/LolApp;component/resources/tier-icons/{0}_{1}.png";
 
-            QueueType1 = Leagues[0].QueueType;
-            Rank1 = Leagues[0].Rank + Leagues[0].Tier;
-            var tierUri = new Uri(tierIconLocation + String.Format(tierIconFormat, Leagues[0].Tier.ToLower(), Leagues[0].Rank.ToLower()));
-            TierIcon1 = new BitmapImage(tierUri);
+            if (Leagues.Count >= 1)
+            {
+                QueueType1 = Leagues[0].QueueType;
+                Rank1 = Leagues[0].Tier + Leagues[0].Rank;
+                Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[0].Tier.ToLower(), Leagues[0].Rank.ToLower()));
+                TierIcon1 = new BitmapImage(tierUri);
+            }
+            if (Leagues.Count >= 2)
+            {
+                QueueType2 = Leagues[1].QueueType;
+                Rank2 = Leagues[1].Tier + Leagues[1].Rank;
+                Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[1].Tier.ToLower(), Leagues[1].Rank.ToLower()));
+                TierIcon2 = new BitmapImage(tierUri);
+            }
+            if (Leagues.Count >= 3)
+            {
+                QueueType3 = Leagues[2].QueueType;
+                Rank3 = Leagues[2].Rank + Leagues[2].Tier;
+                Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[2].Tier.ToLower(), Leagues[2].Rank.ToLower()));
+                TierIcon3 = new BitmapImage(tierUri);
+            }
 
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))

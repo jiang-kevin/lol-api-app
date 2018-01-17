@@ -20,27 +20,29 @@
         </DockPanel>
 
         <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
-                <Image Source="{Binding TierIcon1}" Margin="1"/>
-                <TextBlock Text="{Binding QueueType1}"/>
-                <TextBlock Text="{Binding Rank1}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Image Source="{Binding TierIcon2}"/>
-                <TextBlock Text="{Binding QueueType2}"/>
-                <TextBlock Text="{Binding Rank2}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="2">
-                <Image Source="{Binding TierIcon3}"/>
-                <TextBlock Text="{Binding QueueType3}"/>
-                <TextBlock Text="{Binding Rank3}"/>
-            </StackPanel>
+            <Image Source="{Binding TierIcon1}" Grid.Row="0" Grid.Column="0"/>
+            <TextBlock Text="{Binding QueueType1}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Rank1}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"/>
+
+            <Image Source="{Binding TierIcon2}" Grid.Row="0" Grid.Column="1"/>
+            <TextBlock Text="{Binding QueueType2}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Rank2}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+
+            <Image Source="{Binding TierIcon3}" Grid.Row="0" Grid.Column="2"/>
+            <TextBlock Text="{Binding QueueType3}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Rank3}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"/>
+
         </Grid>
     </Grid>
 </UserControl>

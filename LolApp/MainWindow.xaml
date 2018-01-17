@@ -24,13 +24,13 @@
                 <ColumnDefinition Width="85"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-            <Label Content="Summoner Name:" Grid.Row="0" Grid.Column="0" Margin="10,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <Label Content="Region:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom"/>
-            <TextBox Text="{Binding Username}" Grid.Row="1" Grid.Column="0" Height="23" Margin="10,0,5,0"/>
-            <ComboBox ItemsSource="{Binding RegionList}" SelectedItem="{Binding Region}" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center"/>
-            <Button Click="BtnGetInfo_Click" Content="Search" Grid.Row="1" Grid.Column="2" Margin="5,0,5,0" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Status}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <Label Content="Summoner Name:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,5,0"/>
+            <Label Content="Region:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
+            <TextBox Text="{Binding Username}" Grid.Row="1" Grid.Column="0" Margin="10,4,5,4"/>
+            <ComboBox ItemsSource="{Binding RegionList}" SelectedItem="{Binding Region}" Grid.Row="1" Grid.Column="1" Margin="5,4,5,4"/>
+            <Button Click="BtnGetInfo_Click" Content="Search" Grid.Row="1" Grid.Column="2" Margin="5,4,5,4"/>
+            <TextBlock Text="{Binding Status}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="5,4,5,4"/>
         </Grid>
         
         <TabControl Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

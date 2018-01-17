@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace LolApp.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ObservableObject
     {
         private RiotApi api;
         private StaticApi staticApi;
@@ -32,6 +32,7 @@ namespace LolApp.ViewModel
             }
         }
 
+        #region Info tab data
         private BitmapImage profileIcon;
         public BitmapImage ProfileIcon
         {
@@ -46,6 +47,129 @@ namespace LolApp.ViewModel
             }
         }
 
+        public List<LeaguePosition> Leagues { get; set; }
+
+        private BitmapImage tierIcon1;
+        public BitmapImage TierIcon1
+        {
+            get { return tierIcon1; }
+            set
+            {
+                if (tierIcon1 != value)
+                {
+                    tierIcon1 = value;
+                    RaisePropertyChanged("TierIcon1");
+                }
+            }
+        }
+        private string queueType1;
+        public string QueueType1
+        {
+            get { return queueType1; }
+            set
+            {
+                if (queueType1 != value)
+                {
+                    queueType1 = value;
+                    RaisePropertyChanged("QueueType1");
+                }
+            }
+        }
+        private string rank1;
+        public string Rank1
+        {
+            get { return rank1; }
+            set
+            {
+                if (rank1 != value)
+                {
+                    rank1 = value;
+                    RaisePropertyChanged("Rank1");
+                }
+            }
+        }
+
+        private BitmapImage tierIcon2;
+        public BitmapImage TierIcon2
+        {
+            get { return tierIcon2; }
+            set
+            {
+                if (tierIcon2 != value)
+                {
+                    tierIcon2 = value;
+                    RaisePropertyChanged("TierIcon2");
+                }
+            }
+        }
+        private string queueType2;
+        public string QueueType2
+        {
+            get { return queueType2; }
+            set
+            {
+                if (queueType2 != value)
+                {
+                    queueType2 = value;
+                    RaisePropertyChanged("QueueType2");
+                }
+            }
+        }
+        private string rank2;
+        public string Rank2
+        {
+            get { return rank2; }
+            set
+            {
+                if (rank2 != value)
+                {
+                    rank2 = value;
+                    RaisePropertyChanged("Rank1");
+                }
+            }
+        }
+
+        private BitmapImage tierIcon3;
+        public BitmapImage TierIcon3
+        {
+            get { return tierIcon3; }
+            set
+            {
+                if (tierIcon3 != value)
+                {
+                    tierIcon3 = value;
+                    RaisePropertyChanged("TierIcon1");
+                }
+            }
+        }
+        private string queueType3;
+        public string QueueType3
+        {
+            get { return queueType3; }
+            set
+            {
+                if (queueType3 != value)
+                {
+                    queueType3 = value;
+                    RaisePropertyChanged("QueueType3");
+                }
+            }
+        }
+        private string rank3;
+        public string Rank3
+        {
+            get { return rank3; }
+            set
+            {
+                if (rank3 != value)
+                {
+                    rank3 = value;
+                    RaisePropertyChanged("Rank3");
+                }
+            }
+        }
+        #endregion
+
         public MainViewModel(RiotApi apiInstance, StaticApi staticApiInstance)
         {
             api = apiInstance;
@@ -59,6 +183,7 @@ namespace LolApp.ViewModel
             Region = RegionList[0];
         }
 
+        #region Info tab logic
         public void GetInfo()
         {
             // get a player from name input
@@ -70,8 +195,14 @@ namespace LolApp.ViewModel
             var uri = new Uri(profileIconUrl);
             ProfileIcon = new BitmapImage(uri);
 
-            List<LeaguePosition> leagues = api.GetLeaguePositionById(Region, Summoner.Id);
+            Leagues = api.GetLeaguePositionById(Region, Summoner.Id);
             string tierIconFormat = "{0}_{1}.png";
+            string tierIconLocation = "pack://application:,,,/LolApp;component/resources/tier-icons/";
+
+            QueueType1 = Leagues[0].QueueType;
+            Rank1 = Leagues[0].Rank + Leagues[0].Tier;
+            var tierUri = new Uri(tierIconLocation + String.Format(tierIconFormat, Leagues[0].Tier.ToLower(), Leagues[0].Rank.ToLower()));
+            TierIcon1 = new BitmapImage(tierUri);
 
             //// check validity of name
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))
@@ -94,16 +225,6 @@ namespace LolApp.ViewModel
             //}
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            // take a copy to prevent thread issues
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        #endregion
     }
 }

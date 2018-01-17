@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="LolApp.View.UserControl1"
+﻿<UserControl x:Class="LolApp.View.InfoView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#FFE5E5E5">
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -19,6 +19,28 @@
             <TextBlock Text="{Binding Path=Summoner.RevisionDate}" DockPanel.Dock="Top"/>
         </DockPanel>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <StackPanel Grid.Column="0">
+                <Image Source="{Binding TierIcon1}" Margin="1"/>
+                <TextBlock Text="{Binding QueueType1}"/>
+                <TextBlock Text="{Binding Rank1}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Image Source="{Binding TierIcon2}"/>
+                <TextBlock Text="{Binding QueueType2}"/>
+                <TextBlock Text="{Binding Rank2}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Image Source="{Binding TierIcon3}"/>
+                <TextBlock Text="{Binding QueueType3}"/>
+                <TextBlock Text="{Binding Rank3}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

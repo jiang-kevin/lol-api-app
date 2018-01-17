@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LolApp"
+        xmlns:view="clr-namespace:LolApp.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="470" Width="725">
     <Grid>
@@ -15,20 +16,7 @@
         <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TabControl HorizontalAlignment="Left" Height="346" Margin="10,75,0,0" VerticalAlignment="Top" Width="688">
             <TabItem Header="Info">
-                <Grid Background="#FFE5E5E5">
-                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
-                    <Image Source="{Binding ProfileIcon}" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock Text="{Binding Summoner.Name}" HorizontalAlignment="Left" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.545,0.438" FontSize="24" Height="28" Width="144" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                    <TextBlock Text="{Binding Path=Summoner.SummonerLevel, StringFormat=Level {0}}" HorizontalAlignment="Left" Margin="126,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Width="116"/>
-                    <TextBlock Text="{Binding Path=Summoner.RevisionDate}" HorizontalAlignment="Left" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.676,0.028" Width="345"/>
-                    <Grid x:Name="grdLeagues" HorizontalAlignment="Left" Height="193" Margin="10,115,0,0" VerticalAlignment="Top" Width="662">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="0.15*"/>
-                            <RowDefinition Height="0.15*"/>
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </Grid>
+                <view:InfoView/>
             </TabItem>
             <TabItem Header="Game">
                 <Grid Background="#FFE5E5E5"/>

@@ -18,6 +18,20 @@ namespace LolApp.ViewModel
         public string Username { get; set; }
         public Region Region { get; set; }
 
+        private string status;
+        public string Status
+        {
+            get { return status; }
+            set
+            {
+                if (status != value)
+                {
+                    status = value;
+                    RaisePropertyChanged("Status");
+                }
+            }
+        }
+
         private Summoner summoner;
         public Summoner Summoner
         {

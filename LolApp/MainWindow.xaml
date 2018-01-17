@@ -8,13 +8,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="470" Width="725">
     <Grid>
-        <TextBox Text="{Binding Username}"  HorizontalAlignment="Left" Height="24" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="201,37,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.213,0.604" Click="BtnGetInfo_Click" Height="23"/>
-        <ComboBox ItemsSource="{Binding RegionList}" SelectedItem="{Binding Region}" HorizontalAlignment="Left" Margin="135,37,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.213,1.696"/>
-        <Label Content="Summoner Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.667,0.859"/>
-        <Label Content="Region:" HorizontalAlignment="Left" Margin="132,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.435,0.047"/>
-        <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="290,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TabControl HorizontalAlignment="Left" Height="346" Margin="10,75,0,0" VerticalAlignment="Top" Width="688">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Content="Summoner Name:" Grid.Row="0" Grid.Column="0" Margin="10,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Label Content="Region:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding Username}" Grid.Row="1" Grid.Column="0" Height="23" Margin="10,0,5,0"/>
+            <ComboBox ItemsSource="{Binding RegionList}" SelectedItem="{Binding Region}" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center"/>
+            <Button Click="BtnGetInfo_Click" Content="Search" Grid.Row="1" Grid.Column="2" Margin="5,0,5,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Status}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </Grid>
+        
+        <TabControl Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Info">
                 <view:InfoView/>
             </TabItem>

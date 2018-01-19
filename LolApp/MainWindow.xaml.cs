@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Net;
+﻿using System.Windows;
 using System.Configuration;
-using LolApp.Data;
 using LolApp.Api;
-using LolApp.Properties;
 using LolApp.ViewModel;
 
 namespace LolApp

@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using LolApp.Data;
 using LolApp.Api;
 using System.Windows.Media.Imaging;
-using System.ComponentModel;
 using System.Net;
 
 namespace LolApp.ViewModel

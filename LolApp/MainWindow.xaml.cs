@@ -38,10 +38,5 @@ namespace LolApp
             vm = new MainViewModel(riotApi, staticApi);
             DataContext = vm;
         }
-
-        private void BtnGetInfo_Click(object sender, RoutedEventArgs e)
-        {
-            vm.GetInfo();
-        }
     }
 }

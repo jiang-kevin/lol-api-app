@@ -46,6 +46,21 @@ namespace LolApp.ViewModel
             }
         }
 
+        #region Commands
+        private RelayCommand _getInfoCommand;
+        public RelayCommand GetInfoCommand
+        {
+            get
+            {
+                if (_getInfoCommand == null)
+                {
+                    _getInfoCommand = new RelayCommand(param => GetInfo());
+                }
+                return _getInfoCommand;
+            }
+        }
+#endregion
+
         #region Info tab data
         private BitmapImage profileIcon;
         public BitmapImage ProfileIcon

@@ -5,6 +5,7 @@ using LolApp.Data;
 using LolApp.Api;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
+using System.Net;
 
 namespace LolApp.ViewModel
 {
@@ -18,186 +19,33 @@ namespace LolApp.ViewModel
         public string Username { get; set; }
         public Region Region { get; set; }
 
-        private string status;
+        private string _status;
         public string Status
         {
-            get { return status; }
+            get { return _status; }
             set
             {
-                if (status != value)
+                if (_status != value)
                 {
-                    status = value;
+                    _status = value;
                     RaisePropertyChanged("Status");
                 }
             }
         }
 
-        private Summoner summoner;
+        private Summoner _summoner;
         public Summoner Summoner
         {
-            get { return summoner; }
+            get { return _summoner; }
             set
             {
-                if (summoner != value)
+                if (_summoner != value)
                 {
-                    summoner = value;
+                    _summoner = value;
                     RaisePropertyChanged("Summoner");
                 }
             }
         }
-
-        #region Commands
-        private RelayCommand _getInfoCommand;
-        public RelayCommand GetInfoCommand
-        {
-            get
-            {
-                if (_getInfoCommand == null)
-                {
-                    _getInfoCommand = new RelayCommand(param => GetInfo());
-                }
-                return _getInfoCommand;
-            }
-        }
-#endregion
-
-        #region Info tab data
-        private BitmapImage profileIcon;
-        public BitmapImage ProfileIcon
-        {
-            get { return profileIcon; }
-            set
-            {
-                if (profileIcon != value)
-                {
-                    profileIcon = value;
-                    RaisePropertyChanged("ProfileIcon");
-                }
-            }
-        }
-
-        public List<LeaguePosition> Leagues { get; set; }
-
-        private BitmapImage tierIcon1;
-        public BitmapImage TierIcon1
-        {
-            get { return tierIcon1; }
-            set
-            {
-                if (tierIcon1 != value)
-                {
-                    tierIcon1 = value;
-                    RaisePropertyChanged("TierIcon1");
-                }
-            }
-        }
-        private string queueType1;
-        public string QueueType1
-        {
-            get { return queueType1; }
-            set
-            {
-                if (queueType1 != value)
-                {
-                    queueType1 = value;
-                    RaisePropertyChanged("QueueType1");
-                }
-            }
-        }
-        private string rank1;
-        public string Rank1
-        {
-            get { return rank1; }
-            set
-            {
-                if (rank1 != value)
-                {
-                    rank1 = value;
-                    RaisePropertyChanged("Rank1");
-                }
-            }
-        }
-
-        private BitmapImage tierIcon2;
-        public BitmapImage TierIcon2
-        {
-            get { return tierIcon2; }
-            set
-            {
-                if (tierIcon2 != value)
-                {
-                    tierIcon2 = value;
-                    RaisePropertyChanged("TierIcon2");
-                }
-            }
-        }
-        private string queueType2;
-        public string QueueType2
-        {
-            get { return queueType2; }
-            set
-            {
-                if (queueType2 != value)
-                {
-                    queueType2 = value;
-                    RaisePropertyChanged("QueueType2");
-                }
-            }
-        }
-        private string rank2;
-        public string Rank2
-        {
-            get { return rank2; }
-            set
-            {
-                if (rank2 != value)
-                {
-                    rank2 = value;
-                    RaisePropertyChanged("Rank1");
-                }
-            }
-        }
-
-        private BitmapImage tierIcon3;
-        public BitmapImage TierIcon3
-        {
-            get { return tierIcon3; }
-            set
-            {
-                if (tierIcon3 != value)
-                {
-                    tierIcon3 = value;
-                    RaisePropertyChanged("TierIcon1");
-                }
-            }
-        }
-        private string queueType3;
-        public string QueueType3
-        {
-            get { return queueType3; }
-            set
-            {
-                if (queueType3 != value)
-                {
-                    queueType3 = value;
-                    RaisePropertyChanged("QueueType3");
-                }
-            }
-        }
-        private string rank3;
-        public string Rank3
-        {
-            get { return rank3; }
-            set
-            {
-                if (rank3 != value)
-                {
-                    rank3 = value;
-                    RaisePropertyChanged("Rank3");
-                }
-            }
-        }
-        #endregion
 
         public MainViewModel(RiotApi apiInstance, StaticApi staticApiInstance)
         {
@@ -211,6 +59,177 @@ namespace LolApp.ViewModel
             RegionList.Add(new Region("KR", "kr"));
             Region = RegionList[0];
         }
+
+        #region Commands
+        private RelayCommand _getInfoCommand;
+        public RelayCommand GetInfoCommand
+        {
+            get
+            {
+                if (_getInfoCommand == null)
+                {
+                    _getInfoCommand = new RelayCommand(param => GetData());
+                }
+                return _getInfoCommand;
+            }
+        }
+        #endregion
+
+        public void GetData()
+        {
+            try
+            {
+                GetInfo();
+            }
+            // if exception is HTTP error code
+            catch (WebException ex) when (ex.Response is HttpWebResponse response)
+            {
+                Status = response.StatusDescription;
+            }
+            catch (Exception ex)
+            {
+                Status = ex.ToString();
+            }
+        }
+
+        #region Info tab data
+        private BitmapImage _profileIcon;
+        public BitmapImage ProfileIcon
+        {
+            get { return _profileIcon; }
+            set
+            {
+                if (_profileIcon != value)
+                {
+                    _profileIcon = value;
+                    RaisePropertyChanged("ProfileIcon");
+                }
+            }
+        }
+
+        public List<LeaguePosition> Leagues { get; set; }
+
+        private BitmapImage _tierIcon1;
+        public BitmapImage TierIcon1
+        {
+            get { return _tierIcon1; }
+            set
+            {
+                if (_tierIcon1 != value)
+                {
+                    _tierIcon1 = value;
+                    RaisePropertyChanged("TierIcon1");
+                }
+            }
+        }
+        private string _queueType1;
+        public string QueueType1
+        {
+            get { return _queueType1; }
+            set
+            {
+                if (_queueType1 != value)
+                {
+                    _queueType1 = value;
+                    RaisePropertyChanged("QueueType1");
+                }
+            }
+        }
+        private string _rank1;
+        public string Rank1
+        {
+            get { return _rank1; }
+            set
+            {
+                if (_rank1 != value)
+                {
+                    _rank1 = value;
+                    RaisePropertyChanged("Rank1");
+                }
+            }
+        }
+
+        private BitmapImage _tierIcon2;
+        public BitmapImage TierIcon2
+        {
+            get { return _tierIcon2; }
+            set
+            {
+                if (_tierIcon2 != value)
+                {
+                    _tierIcon2 = value;
+                    RaisePropertyChanged("TierIcon2");
+                }
+            }
+        }
+        private string _queueType2;
+        public string QueueType2
+        {
+            get { return _queueType2; }
+            set
+            {
+                if (_queueType2 != value)
+                {
+                    _queueType2 = value;
+                    RaisePropertyChanged("QueueType2");
+                }
+            }
+        }
+        private string _rank2;
+        public string Rank2
+        {
+            get { return _rank2; }
+            set
+            {
+                if (_rank2 != value)
+                {
+                    _rank2 = value;
+                    RaisePropertyChanged("Rank1");
+                }
+            }
+        }
+
+        private BitmapImage _tierIcon3;
+        public BitmapImage TierIcon3
+        {
+            get { return _tierIcon3; }
+            set
+            {
+                if (_tierIcon3 != value)
+                {
+                    _tierIcon3 = value;
+                    RaisePropertyChanged("TierIcon1");
+                }
+            }
+        }
+        private string _queueType3;
+        public string QueueType3
+        {
+            get { return _queueType3; }
+            set
+            {
+                if (_queueType3 != value)
+                {
+                    _queueType3 = value;
+                    RaisePropertyChanged("QueueType3");
+                }
+            }
+        }
+        private string _rank3;
+        public string Rank3
+        {
+            get { return _rank3; }
+            set
+            {
+                if (_rank3 != value)
+                {
+                    _rank3 = value;
+                    RaisePropertyChanged("Rank3");
+                }
+            }
+        }
+        #endregion
+
 
         #region Info tab logic
         public void GetInfo()
@@ -253,20 +272,6 @@ namespace LolApp.ViewModel
             //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))
             //{
             //    throw new Exception("Invalid username");
-            //}
-
-            //try
-            //{
-            //    PopulateInfo();
-            //}
-            //// if exception is HTTP error code
-            //catch (WebException ex) when (ex.Response is HttpWebResponse response)
-            //{
-            //    lblStatus.Text = response.StatusDescription;
-            //}
-            //catch (Exception ex)
-            //{
-            //    lblStatus.Text = ex.ToString();
             //}
         }
 

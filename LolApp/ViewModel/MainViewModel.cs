@@ -6,6 +6,7 @@ using LolApp.Api;
 using System.Windows.Media.Imaging;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace LolApp.ViewModel
 {
@@ -298,27 +299,46 @@ namespace LolApp.ViewModel
 
             if (Leagues.Count >= 1)
             {
-                QueueType1 = Leagues[0].QueueType;
-                Rank1 = Leagues[0].Tier + Leagues[0].Rank;
+                QueueType1 = QueueFormat(Leagues[0]);
+                Rank1 = RankFormat(Leagues[0]);
                 Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[0].Tier.ToLower(), Leagues[0].Rank.ToLower()));
                 TierIcon1 = new BitmapImage(tierUri);
             }
             if (Leagues.Count >= 2)
             {
-                QueueType2 = Leagues[1].QueueType;
-                Rank2 = Leagues[1].Tier + Leagues[1].Rank;
+                QueueType2 = QueueFormat(Leagues[1]);
+                Rank2 = RankFormat(Leagues[1]);
                 Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[1].Tier.ToLower(), Leagues[1].Rank.ToLower()));
                 TierIcon2 = new BitmapImage(tierUri);
             }
             if (Leagues.Count >= 3)
             {
-                QueueType3 = Leagues[2].QueueType;
-                Rank3 = Leagues[2].Rank + Leagues[2].Tier;
+                QueueType3 = QueueFormat(Leagues[2]);
+                Rank3 = RankFormat(Leagues[2]);
                 Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[2].Tier.ToLower(), Leagues[2].Rank.ToLower()));
                 TierIcon3 = new BitmapImage(tierUri);
             }
         }
 
+        /// <summary>
+        /// Formats a league position into a string that displays the rank and tier in a readable format
+        /// </summary>
+        /// <param name="league">League object to input</param>
+        /// <returns>Rank and tier in readable form</returns>
+        private string RankFormat(LeaguePosition league)
+        {
+            return league.Tier[0] + league.Tier.Substring(1).ToLower() + " " + league.Rank;       // rank always appears in uppercase, so lower every char except the first
+        }
+
+        private string QueueFormat(LeaguePosition league)
+        {
+            switch (league.QueueType)
+            {
+                case "RANKED_SOLO_5x5":
+                    return "5v5 Solo/Duo";
+            }
+            return null;
+        }
         #endregion
     }
 }

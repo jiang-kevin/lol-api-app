@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LolApp.Data;
 
@@ -25,19 +21,25 @@ namespace LolApp.Api
             return JsonConvert.DeserializeObject<DDVersion>(json);
         }
 
-        public ProfileIconList GetProfileIconList(Region region)
+        public IconList<int, ProfileIcon> GetProfileIconList(Region region)
         {
             string json = RequestCachedJson(ProfileIconRootUrl, region);
-            return JsonConvert.DeserializeObject<ProfileIconList>(json);
+            return JsonConvert.DeserializeObject<IconList<int, ProfileIcon>>(json);
         }
 
         public string GetProfileIconUrl(int id, Region region)
         {
-            ProfileIconList profileIcons = GetProfileIconList(region);
+            IconList<int, ProfileIcon> profileIcons = GetProfileIconList(region);
             string filename = profileIcons.Data[id].Image.Full;
             DDVersion versionList = GetVersion(region);
             string profileIconVersion = versionList.N["profileicon"];
             return String.Format(DDProfileIconUrl, profileIconVersion) + filename;
+        }
+
+        public string GetChampionIconUrl(Region region)
+        {
+
+            return null;
         }
     }
 }

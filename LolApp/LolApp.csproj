@@ -63,9 +63,11 @@
     </ApplicationDefinition>
     <Compile Include="Api\Api.cs" />
     <Compile Include="Api\StaticApi.cs" />
+    <Compile Include="Data\GameInfo.cs" />
+    <Compile Include="Data\GameInfoObjects.cs" />
     <Compile Include="Data\LeaguePosition.cs" />
     <Compile Include="Data\MiniSeries.cs" />
-    <Compile Include="Data\PImage.cs" />
+    <Compile Include="Data\RiotImage.cs" />
     <Compile Include="Data\ProfileIcon.cs" />
     <Compile Include="Data\ProfileIconList.cs" />
     <Compile Include="Data\Region.cs" />

@@ -10,7 +10,7 @@ namespace LolApp.Data
     /// <summary>
     /// Class representing the properties of an image
     /// </summary>
-    public class PImage
+    public class RiotImage
     {
         /// <summary>
         /// Filename for the image

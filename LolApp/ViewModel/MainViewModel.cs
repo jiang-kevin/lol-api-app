@@ -5,6 +5,7 @@ using LolApp.Data;
 using LolApp.Api;
 using System.Windows.Media.Imaging;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace LolApp.ViewModel
 {
@@ -92,9 +93,21 @@ namespace LolApp.ViewModel
             {
                 if (_getDataCommand == null)
                 {
-                    _getDataCommand = new RelayCommand(param => GetData());
+                    _getDataCommand = new RelayCommand(param => GetData(), param => IsValidUsername(Username));
                 }
                 return _getDataCommand;
+            }
+        }
+
+        public bool IsValidUsername(string username)
+        {
+            if (username != null)
+            {
+                return Regex.IsMatch(username, "^[0-9\\p{L} _]+$");
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion
@@ -304,12 +317,6 @@ namespace LolApp.ViewModel
                 Uri tierUri = new Uri(String.Format(tierIconLocation, Leagues[2].Tier.ToLower(), Leagues[2].Rank.ToLower()));
                 TierIcon3 = new BitmapImage(tierUri);
             }
-
-            //// check validity of name
-            //if (Regex.IsMatch(name, "^[0-9\\p{L} _\\.]+$"))
-            //{
-            //    throw new Exception("Invalid username");
-            //}
         }
 
         #endregion

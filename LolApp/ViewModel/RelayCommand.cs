@@ -8,6 +8,9 @@ using System.Windows.Input;
 namespace LolApp.ViewModel
 {
     // Code based on code written by Josh Smith in an article from the Febuary 2009 issue of the MSDN Magazine, Volume 24 No. 2
+    /// <summary>
+    /// Boilerplate code for implementing a command to bind to a control
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private Action<object> _execute;

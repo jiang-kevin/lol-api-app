@@ -9,11 +9,44 @@ using System.Net;
 
 namespace LolApp.ViewModel
 {
+    /// <summary>
+    /// ViewModel which represents all the logic and data to be used in LolApp
+    /// </summary>
     public class MainViewModel : ObservableObject
     {
+        public MainViewModel(RiotApi apiInstance, StaticApi staticApiInstance)
+        {
+            api = apiInstance;
+            staticApi = staticApiInstance;
+
+            RegionList = new ObservableCollection<Region>();
+            RegionList.Add(new Region("NA", "na1"));
+            RegionList.Add(new Region("EUW", "euw1"));
+            RegionList.Add(new Region("EUN", "eun1"));
+            RegionList.Add(new Region("KR", "kr"));
+            Region = RegionList[0];
+        }
+
+        #region Application objects
         private RiotApi api;
         private StaticApi staticApi;
 
+        private Summoner _summoner;
+        public Summoner Summoner
+        {
+            get { return _summoner; }
+            set
+            {
+                if (_summoner != value)
+                {
+                    _summoner = value;
+                    RaisePropertyChanged("Summoner");
+                }
+            }
+        }
+        #endregion
+
+        #region Main screen objects
         public ObservableCollection<Region> RegionList { get; set; }
 
         public string Username { get; set; }
@@ -33,48 +66,9 @@ namespace LolApp.ViewModel
             }
         }
 
-        private Summoner _summoner;
-        public Summoner Summoner
-        {
-            get { return _summoner; }
-            set
-            {
-                if (_summoner != value)
-                {
-                    _summoner = value;
-                    RaisePropertyChanged("Summoner");
-                }
-            }
-        }
-
-        public MainViewModel(RiotApi apiInstance, StaticApi staticApiInstance)
-        {
-            api = apiInstance;
-            staticApi = staticApiInstance;
-
-            RegionList = new ObservableCollection<Region>();
-            RegionList.Add(new Region("NA", "na1"));
-            RegionList.Add(new Region("EUW", "euw1"));
-            RegionList.Add(new Region("EUN", "eun1"));
-            RegionList.Add(new Region("KR", "kr"));
-            Region = RegionList[0];
-        }
-
-        #region Commands
-        private RelayCommand _getInfoCommand;
-        public RelayCommand GetInfoCommand
-        {
-            get
-            {
-                if (_getInfoCommand == null)
-                {
-                    _getInfoCommand = new RelayCommand(param => GetData());
-                }
-                return _getInfoCommand;
-            }
-        }
         #endregion
 
+        #region Main screen logic
         public void GetData()
         {
             try
@@ -92,6 +86,20 @@ namespace LolApp.ViewModel
             }
         }
 
+        private RelayCommand _getDataCommand;
+        public RelayCommand GetDataCommand
+        {
+            get
+            {
+                if (_getDataCommand == null)
+                {
+                    _getDataCommand = new RelayCommand(param => GetData());
+                }
+                return _getDataCommand;
+            }
+        }
+        #endregion
+
         #region Info tab data
         private BitmapImage _profileIcon;
         public BitmapImage ProfileIcon
@@ -103,6 +111,34 @@ namespace LolApp.ViewModel
                 {
                     _profileIcon = value;
                     RaisePropertyChanged("ProfileIcon");
+                }
+            }
+        }
+
+        private string _summonerLevel;
+        public string SummonerLevel
+        {
+            get { return _summonerLevel; }
+            set
+            {
+                if (_summonerLevel != value)
+                {
+                    _summonerLevel = value;
+                    RaisePropertyChanged("SummonerLevel");
+                }
+            }
+        }
+
+        private string _summonerRevisionDate;
+        public string SummonerRevisionDate
+        {
+            get { return _summonerRevisionDate; }
+            set
+            {
+                if (_summonerRevisionDate != value)
+                {
+                    _summonerRevisionDate = value;
+                    RaisePropertyChanged("SummonerRevisionDate");
                 }
             }
         }
@@ -230,12 +266,14 @@ namespace LolApp.ViewModel
         }
         #endregion
 
-
         #region Info tab logic
         public void GetInfo()
         {
             // get a player from name input
             Summoner = api.GetSummonerByName(Region, Username);
+
+            SummonerLevel = "Level " + Summoner.SummonerLevel;
+            SummonerRevisionDate = Api.Api.FromUnixTime(Summoner.RevisionDate).ToString();
 
             // get profile icon from static api
             string profileIconUrl = staticApi.GetProfileIconUrl(Summoner.ProfileIconId, Region);

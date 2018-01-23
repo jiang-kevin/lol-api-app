@@ -233,7 +233,7 @@ namespace LolApp.ViewModel
                 if (_rank2 != value)
                 {
                     _rank2 = value;
-                    RaisePropertyChanged("Rank1");
+                    RaisePropertyChanged("Rank2");
                 }
             }
         }

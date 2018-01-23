@@ -336,8 +336,11 @@ namespace LolApp.ViewModel
             {
                 case "RANKED_SOLO_5x5":
                     return "5v5 Solo/Duo";
+                case "RANKED_FLEX_SR":
+                    return "5v5 Flex";
+                default:
+                    return league.QueueType;
             }
-            return null;
         }
         #endregion
     }

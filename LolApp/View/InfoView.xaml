@@ -14,14 +14,14 @@
 
         <DockPanel Grid.Row="0" Background="#FFF4F4F5">
             <Image Source="{Binding ProfileIcon}" DockPanel.Dock="Left"/>
-            <TextBlock Text="{Binding Summoner.Name}" DockPanel.Dock="Top" Margin="5,5,5,5"/>
-            <TextBlock Text="{Binding Path=SummonerLevel}" DockPanel.Dock="Top" Margin="5,0,0,0"/>
-            <TextBlock Text="{Binding Path=SummonerRevisionDate}" DockPanel.Dock="Top" Margin="5,0,0,0"/>
+            <TextBlock Text="{Binding Summoner.Name}" DockPanel.Dock="Top" Margin="5,5,5,5" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Path=SummonerLevel}" DockPanel.Dock="Top" Margin="5,0,0,0" FontSize="16"/>
+            <TextBlock Text="{Binding Path=SummonerRevisionDate}" DockPanel.Dock="Top" Margin="5,0,0,0" FontSize="16"/>
         </DockPanel>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="8*"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -30,6 +30,12 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="1,1,1,1"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            </Grid.Resources>
 
             <Image Source="{Binding TierIcon1}" Grid.Row="0" Grid.Column="0"/>
             <TextBlock Text="{Binding QueueType1}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>

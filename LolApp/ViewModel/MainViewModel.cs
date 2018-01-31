@@ -295,6 +295,7 @@ namespace LolApp.ViewModel
             ProfileIcon = new BitmapImage(uri);
 
             Leagues = api.GetLeaguePositionById(Region, Summoner.Id);
+            ClearLeagues();
             string tierIconLocation = "pack://application:,,,/LolApp;component/resources/tier-icons/{0}_{1}.png";
 
             if (Leagues.Count >= 1)
@@ -341,6 +342,13 @@ namespace LolApp.ViewModel
                 default:
                     return league.QueueType;
             }
+        }
+
+        private void ClearLeagues()
+        {
+            QueueType1 = null;
+            Rank1 = null;
+            TierIcon1 = null;
         }
         #endregion
     }
